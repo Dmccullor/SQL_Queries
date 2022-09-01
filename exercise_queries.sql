@@ -140,11 +140,6 @@ LIMIT 2);
 
 #21
 SET @n = 3;
-SELECT Salary, (ROW_NUMBER() OVER(ORDER BY Salary DESC)) AS rownum
-FROM employeeposition
-WHERE rownum = @n
-ORDER BY Salary DESC;
-#Won't let me use rownum for some reason, instead use subquery to instantiate rownum as a column
 
 SELECT * FROM (
 SELECT EmpID, EmpPosition, DateOfJoining, Salary, ROW_NUMBER() OVER(ORDER BY Salary DESC) rownum
